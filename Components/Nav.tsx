@@ -43,7 +43,7 @@ const Nav = () => {
                         <div key={symbol + index} className="inline-flex items-center space-x-2">
                             <span className="font-bold text-[var(--colour-background-primary)]">{symbol}</span>
                             <span className="text-[var(--colour-background-primary)]">{price.toFixed(2)}</span>
-                            <span className={`border border-2 rounded-sm px-2 py-0.5 ${isPositive ? "border-[var(--colour-buy)] text-[var(--colour-buy)]" : "border-[var(--colour-sell)] text-[var(--colour-sell)]"}`}>
+                            <span className={`border border-2 rounded-sm px-2 py-0 ${isPositive ? "border-[var(--colour-buy)] text-[var(--colour-buy)]" : "border-[var(--colour-sell)] text-[var(--colour-sell)]"}`}>
                                 {Math.abs(percentage_change).toFixed(2)}%
                             </span>
                         </div>

@@ -16,7 +16,7 @@ const Landing = () => {
         <div className='flex'>
           <div className='flex flex-col w-3/5'>
             <div className='mt-8 text-lg space-y-2'>
-              <p>QUICK DESCRIPTION</p>
+              <p>What is <span className='text-[var(--colour-accent-standard)]'>EZ Analysis</span>? To put it simply, </p>
               <Separator />
             </div>
             <div className='mt-5 mb-5'>
