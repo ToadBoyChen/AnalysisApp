@@ -4,6 +4,15 @@
 @custom-variant dark (&:is(.dark *));
 @tailwind utilities;
 
+html {
+  scrollbar-width: none;
+}
+
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
+
 @theme {
   --font-display: "Inter", "sans-serif";
 
@@ -167,5 +176,5 @@
 .animate-marquee {
   display: flex;
   min-width: max-content;
-  animation: marquee 60s linear infinite;
+  animation: marquee 120s linear infinite;
 }

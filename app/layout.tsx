@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={`
         ${inter.variable} 
         bg-[var(--colour-background-primary)] 
-        text-[var(--colour-text-primary)]
+        text-[var(--colour-text-news)]
         subpixel-antialiased`}>
         <Nav />
         <main>

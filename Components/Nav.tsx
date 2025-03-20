@@ -34,8 +34,8 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex justify-between items-center p-5 bg-[var(--colour-background-tertiary)] shadow-md">
-        <div className="overflow-hidden w-full">
+    <nav className="flex justify-between items-center p-2 bg-[var(--colour-background-tertiary)] shadow-md w-full fixed top-0 left-0 z-50">
+        <div className="overflow-hidden">
             <div className="whitespace-nowrap flex animate-marquee gap-10">
                 {[...stockData, ...stockData].map(({ symbol, price, percentage_change }, index) => {
                     const isPositive = percentage_change >= 0;
