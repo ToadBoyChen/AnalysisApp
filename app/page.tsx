@@ -4,7 +4,7 @@ import React from 'react';
 import "@/style/globals.css";
 import { Button } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
-import Demo from "@/Components/Demo";
+import Demo from "@/Components/StockListLineGraph";
 import Image from "next/image";
 import Link from "next/link"
 
@@ -21,8 +21,7 @@ const Landing = () => {
             <div className='flex flex-col'>
               <div className='mt-8 text-lg space-y-2'>
                 <p><span className='text-[var(--colour-accent-standard)]'>3Z-Analysis</span> is a simulation trading platform, meaning no matter who 
-                you are, or where your from, you choose how much money to invest, and when. The choice is yours. We are here to let people practise their skills
-                and be able to apply them to real life. <span className='text-[var(--colour-accent-standard)]'>Money is Freedom</span>.</p> 
+                you are, or where your from, you choose how much money to invest, and when. The choice is yours. <span className='text-[var(--colour-accent-standard)]'>Money is Freedom</span>.</p> 
                 <Separator />
               </div>
               <div className="mt-5 mb-5 text-center">
@@ -66,11 +65,13 @@ const Landing = () => {
       </div>
       <Separator className='mt-5'/>
       <div className='p-10 mt-5 mb-5 flex flex-row'>
-        <div className='w-[40%]'>
+        <div className='w-[50%]'>
           <p className='text-[var(--colour-accent-standard)] text-3xl'>How does 3Z Analysis Work?</p>
-          <p>The back end uses Python to power actionable predictions, that work. We do all the heavy lifting so you can reap the benefits.</p>
+          <p className='p-4'>3Z is a powerful financial tool coded in Python. I combine technical indicators with AI, global news and modelling to push our users the best possible trades. Best of all, its completely free. The back end uses Python to power actionable predictions, that work. I do all the heavy lifting so you can reap the benefits and return a profit.</p>
+          <p className='text-[var(--colour-accent-standard)] text-3xl'>But why should I use 3Z?</p>
+          <p className='p-4'>I believe that tangible results can be achieved alone on data analysis. Whether this is calculating means or generating weights based on the news, its possible, and maybe best, left to a computer. Consider the real worked example ahead.</p>
         </div>
-        <div className='w-[60%] ml-5'>
+        <div className='w-[50%] ml-5'>
           <Demo/>
         </div>
       </div>
