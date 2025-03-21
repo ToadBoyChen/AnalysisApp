@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ScrollTracker from "./ScrollTracker";
 
 const Nav = () => {
   const [stockData, setStockData] = useState<
@@ -34,25 +35,30 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex justify-between items-center p-2 bg-[var(--colour-background-tertiary)] shadow-md w-full fixed top-0 left-0 z-50">
-        <div className="overflow-hidden">
-            <div className="whitespace-nowrap flex animate-marquee gap-10">
-                {[...stockData, ...stockData].map(({ symbol, price, percentage_change }, index) => {
-                    const isPositive = percentage_change >= 0;
-                    return (
-                        <div key={symbol + index} className="inline-flex items-center space-x-2">
-                            <span className="font-bold text-[var(--colour-background-primary)]">{symbol}</span>
-                            <span className="text-[var(--colour-background-primary)]">{price.toFixed(2)}</span>
-                            <span className={`border border-2 rounded-sm px-2 py-0 ${isPositive ? "border-[var(--colour-buy)] text-[var(--colour-buy)]" : "border-[var(--colour-sell)] text-[var(--colour-sell)]"}`}>
-                                {Math.abs(percentage_change).toFixed(2)}%
-                            </span>
-                        </div>
-                    );
-                })}
-            </div>
+    <nav className="flex flex-col justify-between items-center p-2 bg-[var(--colour-background-tertiary)] shadow-md w-full fixed top-0 left-0 z-50">
+      <div className="overflow-hidden w-full">
+        <div className="whitespace-nowrap flex animate-marquee gap-10">
+          {[...stockData, ...stockData].map(({ symbol, price, percentage_change }, index) => {
+            const isPositive = percentage_change >= 0;
+            return (
+              <div key={symbol + index} className="inline-flex items-center space-x-2">
+                <span className="font-bold text-[var(--colour-background-primary)]">{symbol}</span>
+                <span className="text-[var(--colour-background-primary)]">{price.toFixed(2)}</span>
+                <span className={`border border-2 rounded-sm px-2 py-0 ${isPositive ? "border-[var(--colour-buy)] text-[var(--colour-buy)]" : "border-[var(--colour-sell)] text-[var(--colour-sell)]"}`}>
+                  {Math.abs(percentage_change).toFixed(2)}%
+                </span>
+              </div>
+            );
+          })}
         </div>
+      </div>
+      
+      {/* Scroll Tracker positioned at the bottom of the nav */}
+      <div className="w-full absolute bottom-0">
+        <ScrollTracker />
+      </div>
     </nav>
-);
+  );
 
 };
 

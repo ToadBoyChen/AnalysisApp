@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/style/globals.css";
 import Nav from "@/Components/Nav.tsx";
+import ScrollTracker from '@/Components/ScrollTracker';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,7 +26,7 @@ export default function RootLayout({
         bg-[var(--colour-background-primary)] 
         text-[var(--colour-text-news)]
         subpixel-antialiased`}>
-        <Nav />
+        <Nav/>
         <main>
           {children}
         </main>

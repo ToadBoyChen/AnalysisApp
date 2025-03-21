@@ -16,7 +16,7 @@ def get_stock_data():
     percentage_changes = []
     try:
         for stock in STOCKS:
-            data = yf.download(stock, period="1d", interval="5m", group_by='ticker')
+            data = yf.download(stock, period="1d", interval="30m", group_by='ticker')
             
             today_close = data[stock].iloc[-1]['Close']
             yesterday_close = data[stock].iloc[-2]['Close']
