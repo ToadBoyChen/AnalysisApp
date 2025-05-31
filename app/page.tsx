@@ -5,6 +5,8 @@ import "@/style/globals.css";
 import { Button } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
 import Demo from "@/Components/StockListLineGraph";
+import LiveTicker from "@/Components/dashboard/LiveTicker";
+import MarketIndices from "@/Components/dashboard/MarketIndices";
 import Image from "next/image";
 import Link from "next/link"
 
@@ -64,6 +66,14 @@ const Landing = () => {
         </div>
       </div>
       <Separator className='mt-5'/>
+      
+      {/* Live Market Data Section */}
+      <div className='p-10'>
+        <LiveTicker />
+        <MarketIndices />
+      </div>
+      
+      <Separator/>
       <div className='p-10 mt-5 mb-5 flex flex-row'>
         <div className='w-[50%]'>
           <p className='text-[var(--colour-accent-standard)] text-3xl'>How does 3Z Analysis Work?</p>

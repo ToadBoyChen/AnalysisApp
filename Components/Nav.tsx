@@ -4,10 +4,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ScrollTracker from "./ScrollTracker";
 
+interface StockData {
+  symbol: string;
+  price: number;
+  changePercent: number;
+}
+
 const Nav = () => {
-  const [stockData, setStockData] = useState<
-    { symbol: string; today_close: number; percentage_change: number}[]
-  >([]);
+  const [stockData, setStockData] = useState<StockData[]>([]);
 
   useEffect(() => {
     const fetchStockData = async () => {
@@ -20,7 +24,7 @@ const Nav = () => {
     };
 
     fetchStockData();
-    const interval = setInterval(fetchStockData, 30000); // Fetch every 40 seconds
+    const interval = setInterval(fetchStockData, 30000); // Fetch every 30 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -29,19 +33,21 @@ const Nav = () => {
     <nav className="flex flex-col justify-between items-center p-2 bg-[var(--colour-background-tertiary)] shadow-md w-full fixed top-0 left-0 z-50">
       <div className="overflow-hidden w-full">
         <div className="whitespace-nowrap flex animate-marquee gap-10">
-          {[...stockData, ...stockData].map(({ symbol, today_close, percentage_change}, index) => {
-            const isPositive = percentage_change >= 0;
+          {[...stockData, ...stockData].map(({ symbol, price, changePercent }, index) => {
+            const isPositive = (changePercent || 0) >= 0;
             return (
               <div key={symbol + index} className="inline-flex items-center space-x-4">
                 {/* Stock Symbol */}
                 <span className="font-bold text-[var(--colour-background-primary)]">{symbol}</span>
 
-                {/* Stock today_close */}
-                <span className="text-[var(--colour-background-primary)]">${today_close.toFixed(2)}</span>
+                {/* Stock Price */}
+                <span className="text-[var(--colour-background-primary)]">
+                  ${(price || 0).toFixed(2)}
+                </span>
 
                 {/* Percentage Change */}
                 <span className={`border border-2 rounded-sm px-2 py-0 ${isPositive ? "border-[var(--colour-buy)] text-[var(--colour-buy)]" : "border-[var(--colour-sell)] text-[var(--colour-sell)]"}`}>
-                  {Math.abs(percentage_change).toFixed(2)}%
+                  {Math.abs(changePercent || 0).toFixed(2)}%
                 </span>
               </div>
             );

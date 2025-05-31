@@ -9,6 +9,17 @@ import {
   SelectValue,
 } from "@/Components/ui/select";
 
+interface StockData {
+  symbol: string;
+  price: number;
+  previousClose?: number;
+  change?: number;
+  changePercent?: number;
+  high?: number;
+  low?: number;
+  timestamp: number;
+}
+
 const calculateBoxPlotStats = (data: number[]) => {
   const sortedData = [...data].sort((a, b) => a - b);
 
@@ -39,10 +50,10 @@ const calculateBoxPlotStats = (data: number[]) => {
 
 
 const Demo = () => {
-  const [stockData, setStockData] = useState([]);
+  const [stockData, setStockData] = useState<StockData[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedStock, setSelectedStock] = useState("IBM"); // Set default to "IBM"
-  const [filteredData, setFilteredData] = useState(null); // Store filtered data for the selected stock
+  const [filteredData, setFilteredData] = useState<StockData | null>(null); // Store filtered data for the selected stock
   const chartRef = useRef<HTMLDivElement | null>(null); // Ref for the chart container
 
   // Function to fetch stock data from the API
@@ -53,7 +64,7 @@ const Demo = () => {
 
       // Set "IBM" as the default if not already selected
       if (!selectedStock) {
-        const ibmStock = response.data.find((item) => item.symbol === "IBM");
+        const ibmStock = response.data.find((item: StockData) => item.symbol === "IBM");
         if (ibmStock) {
           setSelectedStock("IBM");
         }
@@ -69,8 +80,8 @@ const Demo = () => {
   // Filter the stock data when a stock is selected
   useEffect(() => {
     if (selectedStock) {
-      const stock = stockData.find((item) => item.symbol === selectedStock);
-      setFilteredData(stock);
+      const stock = stockData.find((item: StockData) => item.symbol === selectedStock);
+      setFilteredData(stock || null);
     }
   }, [selectedStock, stockData]);
 
@@ -86,7 +97,7 @@ const Demo = () => {
   }, []);
 
   // Prepare data for box plot calculation
-  const stockPrices = filteredData ? [filteredData.today_close, filteredData.yesterday_close] : [];
+  const stockPrices = filteredData ? [filteredData.price, filteredData.previousClose || filteredData.price] : [];
   const { mean, low, high, Q1, Q3 } = calculateBoxPlotStats(stockPrices);
 
   const options = {
@@ -103,7 +114,7 @@ const Demo = () => {
       type: 'category',
       data: ['Stock Data'],
       axisLabel: {
-        formatter: (value) => value,
+        formatter: (value: string) => value,
       },
     },
     yAxis: {
@@ -111,7 +122,7 @@ const Demo = () => {
       min: low - 5, // Set minimum value based on the data
       max: high + 5, // Set maximum value based on the data
       axisLabel: {
-        formatter: (value) => value.toLocaleString(),
+        formatter: (value: number) => value.toLocaleString(),
       },
     },
     series: [
