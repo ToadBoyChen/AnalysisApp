@@ -36,17 +36,23 @@ const Landing = () => {
                   </span>
                 </div>
                 <div className="flex flex-wrap justify-center gap-6 mb-5">
-                  <Button className="bg-[var(--colour-accent-standard)] w-56 h-14 text-lg rounded-full transition-transform transform hover:scale-105 hover:bg-[var(--colour-accent-light)]">
-                    Sign Up
-                  </Button>
+                  <Link href="/sign-up">
+                    <Button className="bg-[var(--colour-accent-standard)] w-56 h-14 text-lg rounded-full transition-transform transform hover:scale-105 hover:bg-[var(--colour-accent-light)]">
+                      Sign Up
+                    </Button>
+                  </Link>
                   <span className="flex flex-col justify-center text-[var(--colour-text-secondary)]">or</span>
-                  <Button className="bg-[var(--colour-accent-standard)] w-56 h-14 text-lg rounded-full transition-transform transform hover:scale-105 hover:bg-[var(--colour-accent-light)]">
-                    Log In
-                  </Button>
+                  <Link href="/sign-in">
+                    <Button className="bg-[var(--colour-accent-standard)] w-56 h-14 text-lg rounded-full transition-transform transform hover:scale-105 hover:bg-[var(--colour-accent-light)]">
+                      Log In
+                    </Button>
+                  </Link>
                   <span className="flex flex-col justify-center text-[var(--colour-text-secondary)]">or</span>
-                  <Button className="bg-[var(--colour-accent-light)] w-56 h-14 text-lg rounded-full transition-transform transform hover:scale-105 hover:bg-[var(--colour-accent-lighter)]">
-                    Guest
-                  </Button>
+                  <Link href="/home">
+                    <Button className="bg-[var(--colour-accent-light)] w-56 h-14 text-lg rounded-full transition-transform transform hover:scale-105 hover:bg-[var(--colour-accent-lighter)]">
+                      Guest
+                    </Button>
+                  </Link>
                 </div>
                 <p className="text-sm text-[var(--colour-text-secondary)]">
                   To access extended features like setting money, saving trades, and more, you need an account.
@@ -91,17 +97,20 @@ const Landing = () => {
         <p>This project makes use of smart solutions developed by various teams and people, of which all tools are free. I must also state 
           that this is my first endeavour into using a tech-stack for web development. One may see my <Link href="https://toadboychen.github.io/" className='text-[var(--colour-accent-standard)]'>personal website </Link>
            as an idea to how much of a big project this is for me. This project brings many of my passions together, these being software development, trading and mathematics. I hope you can find some use out of it!</p>
-        <div className="flex flex-wrap justify-center gap-15 mt-10 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 mb-20">
           {[
-            { href: "https://react.dev", src: "/react.svg", alt: "React" },
-            { href: "https://nextjs.org", src: "/next.svg", alt: "Next.js" },
-            { href: "https://tailwindcss.com", src: "/tailwindcss.svg", alt: "Tailwind CSS" },
-            { href: "https://ui.shadcn.com", src: "/shadcn.ico", alt: "Shadcn UI" },
-          ].map(({ href, src, alt }) => (
+            { href: "https://react.dev", src: "/react.svg", alt: "React", description: "UI Library" },
+            { href: "https://nextjs.org", src: "/next.svg", alt: "Next.js", description: "React Framework" },
+            { href: "https://tailwindcss.com", src: "/tailwindcss.svg", alt: "Tailwind CSS", description: "CSS Framework" },
+            { href: "https://ui.shadcn.com", src: "/shadcn.ico", alt: "Shadcn UI", description: "Component Library" },
+          ].map(({ href, src, alt, description }) => (
             <Link key={alt} href={href} target="_blank" rel="noopener noreferrer">
-              <div className="flex flex-col items-center justify-center w-36 h-36 bg-[var(--colour-background-secondary)] rounded-xl shadow-md cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-110">
-                <img src={src} alt={alt} className="w-20 h-20" />
-                <p className="mt-2 text-sm text-[var(--colour-text-news)]">{alt}</p>
+              <div className="group flex flex-col items-center justify-center p-6 bg-[var(--colour-background-secondary)] rounded-xl shadow-md cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[var(--colour-background-primary)] border-2 border-transparent hover:border-[var(--colour-accent-standard)]">
+                <div className="w-16 h-16 mb-3 transition-transform duration-300 group-hover:scale-110">
+                  <img src={src} alt={alt} className="w-full h-full object-contain" />
+                </div>
+                <p className="text-sm font-semibold text-[var(--colour-text-primary)] mb-1">{alt}</p>
+                <p className="text-xs text-[var(--colour-text-secondary)] text-center">{description}</p>
               </div>
             </Link>
           ))}
