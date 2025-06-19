@@ -26,8 +26,14 @@ try {
     lazyConnect: true,
     maxRetriesPerRequest: 1
   });
+  
+  redis.on('error', (err) => {
+    console.log('Redis connection error, running without cache:', err.message);
+    redis = null;
+  });
 } catch (error) {
   console.log('Redis not available, running without cache');
+  redis = null;
 }
 
 app.use(cors());
@@ -74,8 +80,14 @@ function initializeFinnhubWebSocket() {
           // Update latest prices
           latestPrices.set(trade.s, stockData);
           
-          // Cache in Redis
-          redis.setex(`stock:${trade.s}`, 300, JSON.stringify(stockData));
+          // Cache in Redis if available
+          if (redis) {
+            try {
+              redis.setex(`stock:${trade.s}`, 300, JSON.stringify(stockData));
+            } catch (err) {
+              console.log('Redis cache error:', err.message);
+            }
+          }
           
           // Broadcast to all connected clients
           io.emit('stockUpdate', stockData);
@@ -217,7 +229,9 @@ process.on('SIGTERM', () => {
   if (finnhubWs) {
     finnhubWs.close();
   }
-  redis.disconnect();
+  if (redis) {
+    redis.disconnect();
+  }
   server.close(() => {
     console.log('Server closed');
     process.exit(0);

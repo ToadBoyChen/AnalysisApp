@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Kill any existing processes on port 5000
+echo "Checking for existing processes on port 5000..."
+lsof -ti:5000 | xargs kill -9 2>/dev/null || true
+
 # Start the WebSocket server in the background
 echo "Starting WebSocket server..."
 cd server && npm start &
@@ -10,7 +14,7 @@ sleep 3
 
 # Start the Next.js development server
 echo "Starting Next.js development server..."
-cd .. && npm run dev &
+cd /home/toad/Projects/AnalysisApp && npm run dev &
 FRONTEND_PID=$!
 
 # Function to cleanup processes on exit
