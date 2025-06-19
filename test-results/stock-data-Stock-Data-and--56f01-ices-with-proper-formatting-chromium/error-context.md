@@ -1,0 +1,75 @@
+# Page snapshot
+
+```yaml
+- navigation: AAPL $150.25 1.18% AAPL $150.25 1.18%
+- main:
+  - paragraph: Effective, Easy & Insightful Trading Platform
+  - paragraph: Free, Open Source and Secure
+  - paragraph: 3Z-Analysis is a simulation trading platform, meaning no matter who you are, or where your from, you choose how much money to invest, and when. The choice is yours. Money is Freedom.
+  - paragraph: Create an Account for Free
+  - text: log in or use our service as a guest.
+  - link "Sign Up":
+    - /url: /sign-up
+    - button "Sign Up"
+  - text: or
+  - link "Log In":
+    - /url: /sign-in
+    - button "Log In"
+  - text: or
+  - link "Guest":
+    - /url: /home
+    - button "Guest"
+  - paragraph: To access extended features like setting money, saving trades, and more, you need an account.
+  - img "Trading platform illustration"
+  - heading "Live Market Data" [level=2]
+  - text: "Disconnected AAPL $150.25 +1.75 (+1.18%) H: $152.00 L: $147.80"
+  - heading "Market Indices" [level=2]
+  - heading "S&P 500" [level=3]
+  - img
+  - text: 4,756.50 +23.45 (+0.49%)
+  - heading "NASDAQ" [level=3]
+  - img
+  - text: 14,845.12 -45.23 (-0.30%)
+  - heading "Dow Jones" [level=3]
+  - img
+  - text: 36,204.44 +156.78 (+0.43%)
+  - heading "Russell 2000" [level=3]
+  - img
+  - text: 2,234.56 -12.34 (-0.55%)
+  - paragraph: How does 3Z Analysis Work?
+  - paragraph: 3Z is a powerful financial tool coded in Python. I combine technical indicators with AI, global news and modelling to push our users the best possible trades. Best of all, its completely free. The back end uses Python to power actionable predictions, that work. I do all the heavy lifting so you can reap the benefits and return a profit.
+  - paragraph: But why should I use 3Z?
+  - paragraph: I believe that tangible results can be achieved alone on data analysis. Whether this is calculating means or generating weights based on the news, its possible, and maybe best, left to a computer. Consider the real worked example ahead.
+  - text: Stock Selector
+  - combobox
+  - text: Select a stock to view its data.
+  - paragraph: Thank you
+  - paragraph:
+    - text: This project makes use of smart solutions developed by various teams and people, of which all tools are free. I must also state that this is my first endeavour into using a tech-stack for web development. One may see my
+    - link "personal website":
+      - /url: https://toadboychen.github.io/
+    - text: as an idea to how much of a big project this is for me. This project brings many of my passions together, these being software development, trading and mathematics. I hope you can find some use out of it!
+  - link "React React UI Library":
+    - /url: https://react.dev
+    - img "React"
+    - paragraph: React
+    - paragraph: UI Library
+  - link "Next.js Next.js React Framework":
+    - /url: https://nextjs.org
+    - img "Next.js"
+    - paragraph: Next.js
+    - paragraph: React Framework
+  - link "Tailwind CSS Tailwind CSS CSS Framework":
+    - /url: https://tailwindcss.com
+    - img "Tailwind CSS"
+    - paragraph: Tailwind CSS
+    - paragraph: CSS Framework
+  - link "Shadcn UI Shadcn UI Component Library":
+    - /url: https://ui.shadcn.com
+    - img "Shadcn UI"
+    - paragraph: Shadcn UI
+    - paragraph: Component Library
+- button "Open Next.js Dev Tools":
+  - img
+- alert
+```

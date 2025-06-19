@@ -1,0 +1,49 @@
+# Page snapshot
+
+```yaml
+- navigation
+- main:
+  - navigation
+  - heading "Create Your Account" [level=1]
+  - paragraph: Join 3Z-Analysis and start your trading journey
+  - button "Continue with Google":
+    - img
+    - text: Continue with Google
+  - button "Continue with Apple":
+    - img
+    - text: Continue with Apple
+  - button "Continue with Microsoft":
+    - img
+    - text: Continue with Microsoft
+  - text: Or continue with email First Name
+  - textbox "First Name"
+  - text: Last Name
+  - textbox "Last Name"
+  - text: Email Address
+  - textbox "Email Address"
+  - text: Password
+  - textbox "Password"
+  - text: Confirm Password
+  - textbox "Confirm Password"
+  - button "Create Account"
+  - paragraph:
+    - text: Already have an account?
+    - link "Sign in here":
+      - /url: /sign-in
+  - paragraph: By creating an account, you agree to our
+  - link "Terms of Service":
+    - /url: /terms
+  - text: and
+  - link "Privacy Policy":
+    - /url: /privacy
+  - heading "Start Your Trading Journey" [level=2]
+  - paragraph: Join thousands of traders using 3Z-Analysis to make informed investment decisions
+  - img "Trading platform dashboard preview"
+  - text: Free Forever Real-time Market Data AI-Powered Analysis Secure & Private
+- button "Open Next.js Dev Tools":
+  - img
+- button "Open issues overlay": 1 Issue
+- button "Collapse issues badge":
+  - img
+- alert
+```

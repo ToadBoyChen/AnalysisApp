@@ -87,7 +87,22 @@ e2e/
 
 ### Test Execution Commands
 
-#### Run All E2E Tests
+#### Run ALL Tests (Unit + E2E)
+```bash
+npm run test:all
+```
+
+#### Run ALL Tests with Coverage
+```bash
+npm run test:all:coverage
+```
+
+#### Run Only Unit Tests (Jest)
+```bash
+npm test
+```
+
+#### Run Only E2E Tests (Playwright)
 ```bash
 npm run test:e2e
 ```
